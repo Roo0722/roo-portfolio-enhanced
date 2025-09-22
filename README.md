@@ -1,3 +1,3 @@
 # roo-portfolio-enhanced
 
-This is made wwith Claude AI
+This is made with Claude AI
