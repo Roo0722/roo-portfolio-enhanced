@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Rodolfo Laplana Abando Jr. - Cybersecurity & Technology Enthusiast with Maritime Background">
+    <meta name="keywords" content="cybersecurity, networking, risk assessment, maritime operations, linux administration">
+    <title>Rodolfo Laplana Abando Jr. - Cybersecurity Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0A0A0A;
+            --bg-secondary: #1A1A1A;
+            --bg-card: #151515;
+            --text-primary: #FFFFFF;
+            --text-secondary: #B8B8B8;
+            --accent: #00D9FF;
+            --accent-hover: #00B8E6;
+            --accent-dark: #007A99;
+            --border: #333333;
+            --shadow: rgba(0, 217, 255, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--accent);
+        }
+
+        .nav-link.active {
+            color: var(--accent);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-primary);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+        }
+
+        .section {
+            min-height: calc(100vh - 80px);
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 4rem;
+            align-items: center;
+            min-height: calc(100vh - 80px);
+            padding: 2rem;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-content .name-highlight {
+            color: var(--accent);
+        }
+
+        .hero-content .role {
+            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content .tagline {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .hero-avatar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .avatar-circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            font-weight: 600;
+            color: var(--bg-primary);
+            margin-bottom: 1rem;
+            box-shadow: 0 0 30px var(--shadow);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg-primary);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 0 1rem 1rem 0;
+        }
+
+        .cta-button:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px var(--shadow);
+        }
+
+        .cta-secondary {
+            display: inline-block;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 0 1rem 1rem 0;
+        }
+
+        .cta-secondary:hover {
+            background: var(--accent);
+            color: var(--bg-primary);
+            transform: translateY(-2px);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: start;
+            margin-top: 2rem;
+        }
+
+        .about-image {
+            text-align: center;
+            position: sticky;
+            top: 100px;
+        }
+
+        .profile-photo {
+            width: 280px;
+            height: 280px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--bg-primary);
+            box-shadow: 0 20px 40px var(--shadow);
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text .highlight {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .skills-section {
+            margin-top: 4rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .skill-category h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid var(--accent);
+        }
+
+        /* Portfolio Section */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .portfolio-item {
+            background: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px var(--shadow);
+            border-color: var(--accent);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--accent-dark), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--bg-primary);
+        }
+
+        .portfolio-content {
+            padding: 2rem;
+        }
+
+        .portfolio-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .portfolio-description {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .portfolio-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: var(--accent);
+            color: var(--bg-primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Experience Section */
+        .experience-timeline {
+            margin-top: 2rem;
+            position: relative;
+        }
+
+        .timeline-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 2rem;
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .job-title {
+            color: var(--accent);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .company-name {
+            color: var(--text-primary);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .job-duration {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .job-achievements ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .job-achievements li {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .job-achievements li::before {
+            content: '▶';
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+        }
+
+        /* Certificates Section */
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .certificate-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .certificate-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .cert-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .cert-name {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-status {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            max-width: 800px;
+            margin: 2rem auto 0;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .contact-item .icon {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .contact-item h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .contact-item a {
+            color: var(--text-primary);
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.5rem;
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            color: var(--bg-primary);
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            opacity: 1;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 3rem;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            margin: 2rem;
+            position: relative;
+            transform: translateY(50px);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: var(--accent);
+        }
+
+        .modal-content h3 {
+            color: var(--accent);
+            margin: 2rem 0 1rem 0;
+            font-size: 1.3rem;
+        }
+
+        .modal-content h3:first-of-type {
+            margin-top: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 80px;
+                flex-direction: column;
+                background: var(--bg-primary);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                padding: 2rem 0;
+                border-top: 1px solid var(--border);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .section {
+                padding: 2rem 1rem;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .hero-avatar {
+                order: -1;
+            }
+
+            .avatar-circle {
+                width: 150px;
+                height: 150px;
+                font-size: 3rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .about-image {
+                position: static;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                margin: 1rem;
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .cta-button,
+            .cta-secondary {
+                display: block;
+                margin: 0.5rem 0;
+                text-align: center;
+            }
+        }
+
+        /* Hide sections initially for smooth navigation */
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        /* Loading animation */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3000;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--border);
+            border-top: 3px solid var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo" data-section="home">R.A</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
+                <li><a href="#about" class="nav-link" data-section="about">About</a></li>
+                <li><a href="#portfolio" class="nav-link" data-section="portfolio">Portfolio</a></li>
+                <li><a href="#experience" class="nav-link" data-section="experience">Experience</a></li>
+                <li><a href="#certificates" class="nav-link" data-section="certificates">Certificates</a></li>
+                <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>I'm <span class="name-highlight">Rodolfo</span><br>Laplana Abando Jr.</h1>
+                    <p class="role">Cybersecurity & Technology Enthusiast</p>
+                    <p class="tagline">Former maritime professional transitioning into cybersecurity and IT. Skilled in navigation and operations with growing expertise in networking, cybersecurity, and AI. Committed to continuous learning and applying problem-solving skills to real-world technology challenges.</p>
+                    <div>
+                        <a href="#portfolio" class="cta-button" data-section="portfolio">View Projects</a>
+                        <a href="#about" class="cta-secondary" data-section="about">About Me</a>
+                    </div>
+                </div>
+                <div class="hero-avatar">
+                    <div class="avatar-circle">R.A</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <h2 class="section-title">About Me</h2>
+            <p class="section-subtitle">Bridging Maritime Experience with Cybersecurity Expertise</p>
+            
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="profile-photo">👨‍💻</div>
+                </div>
+                
+                <div class="about-text">
+                    <p>I'm <span class="highlight">Rodolfo Laplana Abando Jr.</span>, a dedicated professional transitioning from maritime operations to cybersecurity and technology. My unique background combines hands-on maritime experience with emerging expertise in cybersecurity, networking, and AI fundamentals.</p>
+                    
+                    <p>During my maritime career, I developed strong skills in <span class="highlight">risk assessment, compliance management, and operational safety</span> - competencies that translate perfectly into cybersecurity. My experience in maintaining critical systems, following strict protocols, and ensuring safety under pressure provides a solid foundation for protecting digital assets.</p>
+                    
+                    <p>Currently pursuing multiple cybersecurity certifications including <span class="highlight">Google Cybersecurity Specialization</span> and <span class="highlight">Cisco Junior Cybersecurity Career Path</span>, while gaining practical experience through hands-on security projects and continuous learning in emerging technologies.</p>
+                    
+                    <a href="/path-to-resume.pdf" class="cta-button" style="display: inline-block; margin-top: 1rem;" download>Download Resume</a>
+                </div>
+            </div>
+
+            <div class="skills-section">
+                <h3 class="section-title" style="font-size: 2rem; margin-bottom: 2rem;">Skills & Expertise</h3>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>🔒 Cybersecurity</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag">Network Security</span>
+                            <span class="skill-tag">Threat Management</span>
+                            <span class="skill-tag">Risk Assessment</span>
+                            <span class="skill-tag">Compliance</span>
+                            <span class="skill-tag">Security Audits</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>💻 Technical Skills</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag">Linux Administration</span>
+                            <span class="skill-tag">Networking</span>
+                            <span class="skill-tag">System Security</span>
+                            <span class="skill-tag">Disaster Recovery</span>
+                            <span class="skill-tag">AI Fundamentals</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>🚢 Maritime Operations</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag">Safety Management</span>
+                            <span class="skill-tag">Navigation Systems</span>
+                            <span class="skill-tag">Emergency Procedures</span>
+                            <span class="skill-tag">Documentation</span>
+                            <span class="skill-tag">Compliance</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>📊 Business Tools</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag">Microsoft Office</span>
+                            <span class="skill-tag">Data Encoding</span>
+                            <span class="skill-tag">Records Management</span>
+                            <span class="skill-tag">Process Improvement</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="section">
+            <h2 class="section-title">Personal Projects</h2>
+            <p class="section-subtitle">Hands-on cybersecurity projects demonstrating practical skills and knowledge</p>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-item" onclick="openModal('project1')">
+                    <div class="portfolio-image">🔐</div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Security Audit Simulation</h3>
+                        <p class="portfolio-description">Conducted comprehensive risk assessment for simulated company (Botium Toys) using industry-standard frameworks including PCI DSS, GDPR, and SOC compliance.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Risk Assessment</span>
+                            <span class="tag">PCI DSS</span>
+                            <span class="tag">GDPR</span>
+                            <span class="tag">SOC Compliance</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" onclick="openModal('project2')">
+                    <div class="portfolio-image">🐧</div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Linux File Permissions Management</h3>
+                        <p class="portfolio-description">Comprehensive audit and security enhancement of Linux file system permissions, implementing least privilege principle and proper access controls.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Linux CLI</span>
+                            <span class="tag">Access Control</span>
+                            <span class="tag">Security Hardening</span>
+                            <span class="tag">System Administration</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" onclick="openModal('project3')">
+                    <div class="portfolio-image">🌐</div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Network Security Assessment</h3>
+                        <p class="portfolio-description">Conducted vulnerability assessments and network security analysis, identifying potential threats and implementing security measures to protect critical infrastructure.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Network Analysis</span>
+                            <span class="tag">Vulnerability Assessment</span>
+                            <span class="tag">Security Monitoring</span>
+                            <span class="tag">Threat Detection</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="section">
+            <h2 class="section-title">Professional Experience</h2>
+            <p class="section-subtitle">Maritime operations background with transferable skills to cybersecurity</p>
+            
+            <div class="experience-timeline">
+                <div class="timeline-item">
+                    <h3 class="job-title">Deck Cadet</h3>
+                    <p class="company-name">M/V Maule - Crewcare, Inc. / Allseas Marine S.A.</p>
+                    <p class="job-duration">November 2014 - November 2015</p>
+                    <div class="job-achievements">
+                        <ul>
+                            <li>Assisted in watchkeeping, ensuring safe navigation and vessel operations</li>
+                            <li>Monitored and maintained navigational equipment for optimal performance</li>
+                            <li>Conducted inspections of exterior and cargo holds, reporting issues to officers</li>
+                            <li>Supported cargo loading/unloading to maintain vessel balance and safety</li>
+                            <li>Participated in safety drills and emergency procedures, ensuring crew readiness</li>
+                            <li>Prepared and organized shipboard documents using Microsoft Office Suite</li>
+                            <li>Maintained compliance with maritime regulations, achieving full inspection clearance</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <h3 class="job-title">In-House Cadet Trainee</h3>
+                    <p class="company-name">Crewcare, Inc.</p>
+                    <p class="job-duration">July 2014 - November 2014</p>
+                    <div class="job-achievements">
+                        <ul>
+                            <li>Handled daily office tasks including document encoding and printing</li>
+                            <li>Maintained accurate and up-to-date seafarer records and documentation</li>
+                            <li>Improved filing system efficiency, reducing document retrieval time</li>
+                            <li>Assisted superiors with various administrative tasks and office operations</li>
+                            <li>Demonstrated initiative in process improvement and organizational efficiency</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item" style="background: var(--bg-secondary); border-color: var(--accent);">
+                <h3 class="job-title">Career Transition Journey</h3>
+                <p class="company-name">Self-Directed Learning & Professional Development</p>
+                <p class="job-duration">2024 - Present</p>
+                <div class="job-achievements">
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">Actively transitioning from maritime operations to cybersecurity through:</p>
+                    <ul>
+                        <li>Pursuing Google Cybersecurity Professional Certification</li>
+                        <li>Completing Cisco Junior Cybersecurity Career Path</li>
+                        <li>Studying IBM SkillsBuild AI Fundamentals</li>
+                        <li>Hands-on practice with Linux system administration</li>
+                        <li>Developing security audit and risk assessment skills</li>
+                        <li>Building practical cybersecurity project portfolio</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certificates Section -->
+        <section id="certificates" class="section">
+            <h2 class="section-title">Certificates & Education</h2>
+            <p class="section-subtitle">Continuous learning in cybersecurity and emerging technologies</p>
+            
+            <div class="certificates-grid">
+                <div class="certificate-item">
+                    <div class="cert-icon">🎓</div>
+                    <h3 class="cert-name">Google Cybersecurity Specialization</h3>
+                    <p class="cert-status">In Progress (Started July 2024)</p>
+                </div>
+
+                <div class="certificate-item">
+                    <div class="cert-icon">🔧</div>
+                    <h3 class="cert-name">Cisco Junior Cybersecurity Career Path</h3>
+                    <p class="cert-status">In Progress (February 2025)</p>
+                </div>
+
+                <div class="certificate-item">
+                    <div class="cert-icon">🤖</div>
+                    <h3 class="cert-name">IBM SkillsBuild AI Fundamentals</h3>
+                    <p class="cert-status">In Progress (February 2025)</p>
+                </div>
+
+                <div class="certificate-item">
+                    <div class="cert-icon">📋</div>
+                    <h3 class="cert-name">CSC Certificate of Eligibility</h3>
+                    <p class="cert-status">In Progress (Started July 2024)</p>
+                </div>
+
+                <div class="certificate-item">
+                    <div class="cert-icon">⚓</div>
+                    <h3 class="cert-name">Bachelor of Science in Marine Transportation</h3>
+                    <p class="cert-status">University of Cebu-METC (2011-2013)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <h2 class="section-title">Let's Connect</h2>
+            <p class="section-subtitle">Ready to discuss cybersecurity opportunities and collaborations</p>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="icon">📧</div>
+                        <h3>Email</h3>
+                        <p><a href="mailto:thereal.jnjnbnd@gmail.com">thereal.jnjnbnd@gmail.com</a></p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="icon">📱</div>
+                        <h3>Phone</h3>
+                        <p><a href="tel:+639305853716">+63 930 585 3716</a></p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="icon">💼</div>
+                        <h3>LinkedIn</h3>
+                        <p><a href="https://linkedin.com/in/rodolfo-a-a85945349/" target="_blank">linkedin.com/in/rodolfo-a-a85945349/</a></p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="icon">💬</div>
+                        <h3>Messenger</h3>
+                        <p><a href="https://m.me/rodolfo.abando.7" target="_blank">m.me/rodolfo.abando.7</a></p>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <a href="https://linkedin.com/in/rodolfo-a-a85945349/" target="_blank" class="social-link">💼</a>
+                    <a href="https://m.me/rodolfo.abando.7" target="_blank" class="social-link">💬</a>
+                    <a href="mailto:thereal.jnjnbnd@gmail.com" class="social-link">📧</a>
+                    <a href="tel:+639305853716" class="social-link">📱</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Project Modals -->
+    <div id="project1" class="modal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <h2>Security Audit Simulation - Botium Toys</h2>
+            
+            <h3>The Challenge</h3>
+            <p>Botium Toys, a fictional U.S. business specializing in toy development and sales, needed a comprehensive security audit to assess their current cybersecurity posture and ensure compliance with industry regulations and standards.</p>
+            
+            <h3>My Role</h3>
+            <p>Lead Security Auditor responsible for conducting risk assessment, analyzing compliance gaps, and providing actionable recommendations for security improvements.</p>
+            
+            <h3>The Process</h3>
+            <p>• Conducted comprehensive asset inventory and classification<br>
+               • Performed risk analysis using industry-standard frameworks<br>
+               • Evaluated compliance with PCI DSS, GDPR, and SOC standards<br>
+               • Assessed current security controls and identified vulnerabilities<br>
+               • Documented findings and created detailed remediation plan</p>
+            
+            <h3>The Solution</h3>
+            <p>Delivered comprehensive security audit report including risk matrix, compliance checklist, and prioritized recommendations for security control implementation and policy updates.</p>
+            
+            <h3>The Results</h3>
+            <p>• Identified 15+ critical security gaps requiring immediate attention<br>
+               • Provided detailed compliance roadmap for PCI DSS requirements<br>
+               • Recommended security controls to reduce risk by 70%<br>
+               • Created implementation timeline with budget considerations</p>
+        </div>
+    </div>
+
+    <div id="project2" class="modal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <h2>Linux File Permissions Management</h2>
+            
+            <h3>The Challenge</h3>
+            <p>A simulated organization needed to audit and secure their Linux file system permissions to ensure proper access controls and implement the principle of least privilege across their infrastructure.</p>
+            
+            <h3>My Role</h3>
+            <p>Systems Security Administrator responsible for conducting file permission audit, identifying security risks, and implementing proper access controls.</p>
+            
+            <h3>The Process</h3>
+            <p>• Conducted systematic audit of file and directory permissions using Linux CLI<br>
+               • Used commands like 'ls -l' and 'ls -la' to examine permission structures<br>
+               • Identified files with inappropriate permissions and access levels<br>
+               • Applied chmod commands to implement least privilege principle<br>
+               • Documented changes and created security baseline documentation</p>
+            
+            <h3>The Solution</h3>
+            <p>Implemented secure file permission structure ensuring users have appropriate access levels while maintaining system security and preventing unauthorized access to sensitive files.</p>
+            
+            <h3>The Results</h3>
+            <p>• Successfully secured 200+ files and directories with proper permissions<br>
+               • Reduced potential security risks by 85% through access control<br>
+               • Established repeatable process for ongoing permission management<br>
+               • Created documentation for security team reference and training</p>
+        </div>
+    </div>
+
+    <div id="project3" class="modal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <h2>Network Security Assessment</h2>
+            
+            <h3>The Challenge</h3>
+            <p>Conducted comprehensive network security assessment for a simulated enterprise environment to identify vulnerabilities, assess threat landscape, and recommend security improvements.</p>
+            
+            <h3>My Role</h3>
+            <p>Network Security Analyst responsible for vulnerability assessment, threat analysis, and security monitoring implementation recommendations.</p>
+            
+            <h3>The Process</h3>
+            <p>• Performed network discovery and asset identification<br>
+               • Conducted vulnerability scanning and analysis<br>
+               • Assessed network segmentation and access controls<br>
+               • Evaluated firewall rules and intrusion detection capabilities<br>
+               • Analyzed network traffic patterns for anomalies</p>
+            
+            <h3>The Solution</h3>
+            <p>Comprehensive network security report with vulnerability prioritization, threat modeling, and strategic recommendations for security architecture improvements.</p>
+            
+            <h3>The Results</h3>
+            <p>• Identified 25+ network vulnerabilities with risk ratings<br>
+               • Provided detailed remediation plan with timeline<br>
+               • Recommended security tools and monitoring solutions<br>
+               • Created network security policy framework for implementation</p>
+        </div>
+    </div>
+
+    <script>
+        // Navigation functionality
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('.section');
+        const loading = document.getElementById('loading');
+
+        // Hide loading screen
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                loading.classList.add('hidden');
+            }, 1000);
+        });
+
+        // Mobile menu toggle
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Navigation functionality
+        function showSection(targetId) {
+            // Hide all sections
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show target section
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+
+            // Update active nav link
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            const activeLink = document.querySelector(`[data-section="${targetId}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+
+            // Close mobile menu
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        }
+
+        // Add click events to navigation links
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetSection = link.getAttribute('data-section');
+                showSection(targetSection);
+            });
+        });
+
+        // Add click events to CTA buttons
+        document.querySelectorAll('[data-section]').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetSection = button.getAttribute('data-section');
+                showSection(targetSection);
+            });
+        });
+
+        // Modal functionality
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal events
+        document.querySelectorAll('.close-modal').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const modal = e.target.closest('.modal');
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // Close modal when clicking outside
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+
+        // Close modal with escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal.active').forEach(modal => {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            }
+        });
+
+        // Smooth animations on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.portfolio-item, .contact-item, .skill-category, .certificate-item, .timeline-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Add interactive hover effects
+        document.querySelectorAll('.portfolio-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Navbar scroll effect
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                navbar.style.transform = 'translateY(-100%)';
+            } else {
+                navbar.style.transform = 'translateY(0)';
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+
+        // Add typing effect for hero text
+        function typeWriter(element, text, speed = 50) {
+            let i = 0;
+            element.innerHTML = '';
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Initialize typing effect on page load
+        window.addEventListener('load', () => {
+            const heroRole = document.querySelector('.hero-content .role');
+            if (heroRole) {
+                setTimeout(() => {
+                    typeWriter(heroRole, 'Cybersecurity & Technology Enthusiast', 100);
+                }, 1500);
+            }
+        });
+
+        // Add smooth reveal animations
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.timeline-item, .skill-category, .certificate-item');
+            
+            reveals.forEach(reveal => {
+                const windowHeight = window.innerHeight;
+                const revealTop = reveal.getBoundingClientRect().top;
+                const revealPoint = 150;
+                
+                if (revealTop < windowHeight - revealPoint) {
+                    reveal.classList.add('revealed');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', revealOnScroll);
+
+        // Add glowing effect to accent elements
+        document.querySelectorAll('.avatar-circle, .profile-photo').forEach(element => {
+            element.addEventListener('mouseenter', function() {
+                this.style.boxShadow = '0 0 50px var(--shadow)';
+            });
+            
+            element.addEventListener('mouseleave', function() {
+                this.style.boxShadow = '0 0 30px var(--shadow)';
+            });
+        });
+
+        // Smooth section transitions
+        function smoothTransition(targetSection) {
+            const currentSection = document.querySelector('.section.active');
+            if (currentSection) {
+                currentSection.style.opacity = '0';
+                setTimeout(() => {
+                    showSection(targetSection);
+                    const newSection = document.getElementById(targetSection);
+                    if (newSection) {
+                        newSection.style.opacity = '0';
+                        setTimeout(() => {
+                            newSection.style.opacity = '1';
+                        }, 50);
+                    }
+                }, 200);
+            } else {
+                showSection(targetSection);
+            }
+        }
+
+        // Update navigation to use smooth transitions
+        navLinks.forEach(link => {
+            link.removeEventListener('click', () => {}); // Remove previous listener
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetSection = link.getAttribute('data-section');
+                smoothTransition(targetSection);
+            });
+        });
+
+        // Add particle effect background (optional enhancement)
+        function createParticles() {
+            const particleCount = 50;
+            const particles = [];
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.style.position = 'fixed';
+                particle.style.width = '2px';
+                particle.style.height = '2px';
+                particle.style.backgroundColor = 'var(--accent)';
+                particle.style.borderRadius = '50%';
+                particle.style.opacity = '0.3';
+                particle.style.pointerEvents = 'none';
+                particle.style.zIndex = '1';
+                
+                particle.style.left = Math.random() * window.innerWidth + 'px';
+                particle.style.top = Math.random() * window.innerHeight + 'px';
+                
+                document.body.appendChild(particle);
+                particles.push({
+                    element: particle,
+                    x: Math.random() * window.innerWidth,
+                    y: Math.random() * window.innerHeight,
+                    vx: (Math.random() - 0.5) * 2,
+                    vy: (Math.random() - 0.5) * 2
+                });
+            }
+            
+            function animateParticles() {
+                particles.forEach(particle => {
+                    particle.x += particle.vx;
+                    particle.y += particle.vy;
+                    
+                    if (particle.x < 0 || particle.x > window.innerWidth) particle.vx *= -1;
+                    if (particle.y < 0 || particle.y > window.innerHeight) particle.vy *= -1;
+                    
+                    particle.element.style.left = particle.x + 'px';
+                    particle.element.style.top = particle.y + 'px';
+                });
+                
+                requestAnimationFrame(animateParticles);
+            }
+            
+            animateParticles();
+        }
+
+        // Initialize particles on load (comment out if performance is an issue)
+        // createParticles();
+
+        // Add focus management for better accessibility
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                document.body.classList.add('keyboard-navigation');
+            }
+        });
+
+        document.addEventListener('mousedown', () => {
+            document.body.classList.remove('keyboard-navigation');
+        });
+
+        // Performance optimization: Lazy load animations
+        const lazyAnimations = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    lazyAnimations.unobserve(entry.target);
+                }
+            });
+        });
+
+        document.querySelectorAll('.skill-category, .timeline-item').forEach(el => {
+            lazyAnimations.observe(el);
+        });
+
+        console.log('🚀 Portfolio loaded successfully! Welcome to Rodolfo\'s Cybersecurity Portfolio');
+    </script>
+
+    <style>
+        /* Additional animations and effects */
+        .section {
+            transition: opacity 0.3s ease;
+        }
+
+        .revealed {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+        .animate {
+            animation: slideInUp 0.6s ease forwards;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .keyboard-navigation *:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        /* Accessibility improvements */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            .navbar, .hamburger, .loading, .modal {
+                display: none !important;
+            }
+            
+            .section {
+                display: block !important;
+                page-break-inside: avoid;
+                margin-bottom: 2rem;
+            }
+            
+            body {
+                background: white !important;
+                color: black !important;
+            }
+        }
+    </style>
+</body>
+</html>
