@@ -14,27 +14,27 @@ A single-page, responsive portfolio website designed to showcase my skills and p
 
 ## 🚀 The Development Journey
 
-This project was built using an iterative process, starting from a basic concept and adding layers of functionality and design improvements.
+This portfolio was built with no prior coding experience, using an AI assistant as the primary development tool. My role was to act as the project manager, providing clear instructions and refining the output at each stage. This demonstrates my ability to communicate technical requirements, manage project scope, and leverage new technologies to solve problems.
 
 ### Step 1: Foundational Structure & Core Content
 
-I started by creating a single HTML file to serve as the foundation. The primary goal was to lay out the core content, including the "About Me," "Projects," and "Contact" sections. I integrated my portfolio summary and key skills, using semantic HTML and Tailwind CSS for initial styling to ensure a clean, modern look.
+I instructed the AI to create the basic HTML structure for a personal portfolio, including sections for "About Me," "Projects," and "Contact." I then provided a summary of my portfolio and personal details, and the AI integrated this information into the initial layout.
 
 ### Step 2: Content Enrichment & Navigation
 
-Next, I focused on making the content more accessible and useful. I integrated live links to individual project documents and folders, allowing visitors to dive deeper into my work. I also added a prominent "View Resume" button on the hero section for easy access. The navigation menu was configured with smooth-scroll functionality, enhancing the user experience.
+Using the AI, I provided links to my project files and my resume. The AI then generated the necessary HTML to turn these into clickable buttons and added smooth-scrolling functionality to the navigation menu, improving user experience.
 
 ### Step 3: Adding Visual Flair & Polish
 
-To bring the website to life, I implemented subtle CSS animations. This included fade-in and slide-up effects for sections and project cards as they come into view. I also refined the layout of the project buttons, ensuring they were consistently aligned, and added Font Awesome icons to the contact section to give it a professional, branded feel.
+I asked the AI to add dynamic visual elements. The AI implemented CSS animations that cause sections and project cards to fade in and slide up as the user scrolls. It also refined the button layouts and added professional icons to the contact section.
 
 ### Step 4: Building a Functional Contact Form
 
-The biggest challenge was to make the contact form work without a backend server. I solved this by integrating a third-party service called **Formspree**. I configured the form's `action` attribute to my unique Formspree endpoint, and used JavaScript's Fetch API to handle the submission process asynchronously. This ensures a smooth, non-refreshing user experience while the form data is securely delivered to my email.
+To make the contact form fully functional, I researched and decided to use a third-party service, Formspree. I provided the AI with my Formspree endpoint and instructed it to build a contact form that could send messages without requiring a page refresh.
 
 ### Step 5: Final Review & Deployment
 
-After all features were implemented, I conducted a final review to correct any small formatting errors and ensure the code was clean and well-commented. The single-file approach made the website easy to manage and deploy to a hosting service like GitHub Pages.
+As a final step, I instructed the AI to review the entire codebase for any errors or inconsistencies. The single-file approach made the website easy to manage and deploy to a hosting service like GitHub Pages.
 
 ---
 
@@ -45,6 +45,7 @@ After all features were implemented, I conducted a final review to correct any s
 * **Font Awesome:** For professional icons in the contact section.
 * **JavaScript:** To handle smooth-scrolling, form submission, and scroll-based animations.
 * **Formspree:** A backend service used to receive and forward form submissions without a server.
+* **Generative AI:** The primary tool used to generate and refine the codebase.
 
 ---
 
