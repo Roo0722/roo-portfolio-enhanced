@@ -34,6 +34,41 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
+
+        /* Initial state for animations */
+        .animate-on-scroll,
+        .animate-hero-text,
+        .animate-hero-buttons {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* Animation class for scroll-based elements */
+        .animated-visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        /* Keyframes for Hero section entry animation */
+        @keyframes hero-fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-hero-text {
+            animation: hero-fade-in 0.8s ease-out 0.2s forwards;
+        }
+        
+        .animate-hero-buttons {
+            animation: hero-fade-in 0.8s ease-out 0.6s forwards;
+        }
     </style>
 </head>
 
@@ -55,13 +90,13 @@
         <!-- Hero Section -->
         <section id="hero" class="h-screen flex items-center justify-center text-center bg-gray-950 px-6">
             <div class="max-w-3xl">
-                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight text-white mb-4">
+                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight text-white mb-4 animate-hero-text">
                     Securing the Future with <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-500">Cybersecurity and AI</span>
                 </h1>
-                <p class="text-lg md:text-xl text-gray-400 mb-8">
+                <p class="text-lg md:text-xl text-gray-400 mb-8 animate-hero-text">
                     Crafting secure digital solutions with a focus on threat detection, vulnerability management, and robust security practices.
                 </p>
-                <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4 animate-hero-buttons">
                     <a href="#contact" class="button-primary inline-block bg-gradient-to-r from-teal-500 to-cyan-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 transform">
                         Let's Connect
                     </a>
@@ -75,8 +110,8 @@
         <!-- About Section -->
         <section id="about" class="py-20 px-6 md:px-8 bg-gray-900">
             <div class="container mx-auto max-w-4xl text-center">
-                <h2 class="text-4xl font-bold mb-4">About Me</h2>
-                <p class="text-gray-400 mb-8 max-w-2xl mx-auto">
+                <h2 class="text-4xl font-bold mb-4 animate-on-scroll">About Me</h2>
+                <p class="text-gray-400 mb-8 max-w-2xl mx-auto animate-on-scroll">
                     I am a dedicated professional actively transitioning into the dynamic fields of <strong>cybersecurity</strong> and <strong>artificial intelligence</strong>. My background in Marine Transportation has equipped me with strong discipline, problem-solving skills, and teamwork abilities, which I now apply to threat detection and information and communication technology (ICT). I'm passionate about building a career where I can contribute to securing digital environments and connecting with like-minded individuals.
                 </p>
             </div>
@@ -85,8 +120,8 @@
         <!-- Projects Section -->
         <section id="projects" class="py-20 px-6 md:px-8 bg-gray-950">
             <div class="container mx-auto">
-                <h2 class="text-4xl font-bold text-center mb-12">Key Projects and Skills</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <h2 class="text-4xl font-bold text-center mb-12 animate-on-scroll">Key Projects and Skills</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-on-scroll">
                     <!-- Project Card 1: Security Auditing -->
                     <div class="card bg-gray-800 rounded-lg p-6 shadow-xl border border-gray-700 flex flex-col justify-between">
                         <div>
@@ -128,7 +163,7 @@
                     </div>
                 </div>
                 
-                <div class="flex justify-center mt-12">
+                <div class="flex justify-center mt-12 animate-on-scroll">
                     <a href="https://drive.google.com/drive/folders/1rsAyijGRZYHuaxnmfKQnbvguNBrU0E9r?usp=drive_link" target="_blank" class="button-primary inline-block bg-gradient-to-r from-teal-500 to-cyan-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 transform">
                         View All Projects
                     </a>
@@ -139,10 +174,10 @@
         <!-- Contact Section -->
         <section id="contact" class="py-20 px-6 md:px-8 bg-gray-900">
             <div class="container mx-auto max-w-2xl">
-                <h2 class="text-4xl font-bold text-center mb-12">Get In Touch</h2>
+                <h2 class="text-4xl font-bold text-center mb-12 animate-on-scroll">Get In Touch</h2>
                 
                 <!-- Social Media and Contact Links -->
-                <div class="flex justify-center space-x-8 text-gray-400 mb-8">
+                <div class="flex justify-center space-x-8 text-gray-400 mb-8 animate-on-scroll">
                     <a href="mailto:rdlfbndjr1014@duck.com" class="hover:text-cyan-400 transition-colors" title="Email">
                         <i class="fa-solid fa-envelope text-3xl"></i>
                     </a>
@@ -157,7 +192,7 @@
                     </a>
                 </div>
 
-                <form id="contactForm" class="space-y-6">
+                <form id="contactForm" class="space-y-6 animate-on-scroll">
                     <div>
                         <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Name</label>
                         <input type="text" id="name" name="name" class="w-full p-3 rounded-md bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500" required>
@@ -202,6 +237,23 @@
                     behavior: 'smooth'
                 });
             });
+        });
+
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        const animatedElements = document.querySelectorAll('.animate-on-scroll');
+        animatedElements.forEach(element => {
+            observer.observe(element);
         });
     </script>
 </body>
