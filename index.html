@@ -35,6 +35,7 @@
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
+            position: relative;
         }
 
         /* Navigation */
@@ -64,6 +65,11 @@
             font-weight: 600;
             color: var(--accent);
             text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.1) rotate(5deg);
         }
 
         .nav-menu {
@@ -76,12 +82,13 @@
             color: var(--text-primary);
             text-decoration: none;
             font-weight: 400;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, transform 0.3s ease;
             position: relative;
         }
 
         .nav-link:hover {
             color: var(--accent);
+            transform: translateY(-2px);
         }
 
         .nav-link.active {
@@ -128,6 +135,13 @@
             padding: 4rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .section.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .section-title {
@@ -135,6 +149,24 @@
             font-weight: 600;
             margin-bottom: 1rem;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: var(--accent);
+            transform: translateX(-50%);
+            transition: width 0.5s ease;
+        }
+
+        .section.active .section-title::after {
+            width: 100px;
         }
 
         .section-subtitle {
@@ -145,6 +177,14 @@
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease 0.2s;
+        }
+
+        .section.active .section-subtitle {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Hero Section */
@@ -155,16 +195,38 @@
             align-items: center;
             min-height: calc(100vh - 80px);
             padding: 2rem;
+            position: relative;
+            overflow: hidden;
         }
 
         .hero-content h1 {
             font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 700;
             margin-bottom: 0.5rem;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
         .hero-content .name-highlight {
             color: var(--accent);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-content .name-highlight::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.5s ease;
+        }
+
+        .hero-content:hover .name-highlight::after {
+            width: 100%;
         }
 
         .hero-content .role {
@@ -172,6 +234,9 @@
             color: var(--accent);
             font-weight: 500;
             margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
         }
 
         .hero-content .tagline {
@@ -179,6 +244,16 @@
             color: var(--text-secondary);
             margin-bottom: 2rem;
             line-height: 1.6;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s;
+        }
+
+        .section.active .hero-content h1,
+        .section.active .hero-content .role,
+        .section.active .hero-content .tagline {
+            opacity: 1;
+            transform: translateX(0);
         }
 
         .hero-avatar {
@@ -186,6 +261,7 @@
             align-items: center;
             justify-content: center;
             flex-direction: column;
+            perspective: 1000px;
         }
 
         .avatar-circle {
@@ -201,6 +277,13 @@
             color: var(--bg-primary);
             margin-bottom: 1rem;
             box-shadow: 0 0 30px var(--shadow);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            transform: rotateY(0deg);
+        }
+
+        .avatar-circle:hover {
+            transform: rotateY(10deg) scale(1.05);
+            box-shadow: 0 0 50px var(--shadow);
         }
 
         .cta-button {
@@ -213,11 +296,33 @@
             font-weight: 600;
             transition: all 0.3s ease;
             margin: 0 1rem 1rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
         }
 
         .cta-button:hover {
             background: var(--accent-hover);
-            transform: translateY(-2px);
+            transform: translateY(-2px) scale(1.05);
             box-shadow: 0 8px 20px var(--shadow);
         }
 
@@ -231,12 +336,34 @@
             font-weight: 600;
             transition: all 0.3s ease;
             margin: 0 1rem 1rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-secondary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .cta-secondary:hover::before {
+            left: 100%;
         }
 
         .cta-secondary:hover {
             background: var(--accent);
             color: var(--bg-primary);
-            transform: translateY(-2px);
+            transform: translateY(-2px) scale(1.05);
         }
 
         /* About Section */
@@ -265,6 +392,12 @@
             font-size: 4rem;
             color: var(--bg-primary);
             box-shadow: 0 20px 40px var(--shadow);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 20px 60px var(--shadow);
         }
 
         .about-text {
@@ -275,11 +408,35 @@
 
         .about-text p {
             margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .section.active .about-text p {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .about-text .highlight {
             color: var(--accent);
             font-weight: 600;
+            position: relative;
+        }
+
+        .about-text .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.4s ease;
+        }
+
+        .about-text .highlight:hover::after {
+            width: 100%;
         }
 
         .skills-section {
@@ -298,12 +455,34 @@
             padding: 2rem;
             border-radius: 12px;
             border: 1px solid var(--border);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 30px var(--shadow);
         }
 
         .skill-category h3 {
             color: var(--accent);
             margin-bottom: 1rem;
             font-size: 1.3rem;
+            position: relative;
+        }
+
+        .skill-category h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.4s ease;
+        }
+
+        .skill-category:hover h3::after {
+            width: 50%;
         }
 
         .skill-list {
@@ -319,6 +498,13 @@
             border-radius: 20px;
             font-size: 0.9rem;
             border: 1px solid var(--accent);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            transform: scale(1.1);
+            background: var(--accent);
+            color: var(--bg-primary);
         }
 
         /* Portfolio Section */
@@ -334,12 +520,34 @@
             border-radius: 12px;
             border: 1px solid var(--border);
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
             cursor: pointer;
+            position: relative;
+        }
+
+        .portfolio-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(0, 217, 255, 0.1),
+                transparent
+            );
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .portfolio-item:hover::before {
+            opacity: 1;
         }
 
         .portfolio-item:hover {
-            transform: translateY(-10px);
+            transform: translateY(-10px) scale(1.02);
             box-shadow: 0 20px 40px var(--shadow);
             border-color: var(--accent);
         }
@@ -353,6 +561,11 @@
             justify-content: center;
             font-size: 3rem;
             color: var(--bg-primary);
+            transition: transform 0.4s ease;
+        }
+
+        .portfolio-item:hover .portfolio-image {
+            transform: scale(1.05);
         }
 
         .portfolio-content {
@@ -385,6 +598,11 @@
             border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 500;
+            transition: transform 0.3s ease;
+        }
+
+        .tag:hover {
+            transform: scale(1.1);
         }
 
         /* Experience Section */
@@ -400,6 +618,7 @@
             padding: 2rem;
             margin-bottom: 2rem;
             position: relative;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
 
         .timeline-item::before {
@@ -411,6 +630,16 @@
             height: 20px;
             background: var(--accent);
             border-radius: 50%;
+            transition: transform 0.4s ease;
+        }
+
+        .timeline-item:hover::before {
+            transform: scale(1.2);
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px var(--shadow);
         }
 
         .job-title {
@@ -442,6 +671,14 @@
             margin-bottom: 0.5rem;
             padding-left: 1.5rem;
             position: relative;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .section.active .job-achievements li {
+            opacity: 1;
+            transform: translateX(0);
         }
 
         .job-achievements li::before {
@@ -449,6 +686,11 @@
             color: var(--accent);
             position: absolute;
             left: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .job-achievements li:hover::before {
+            transform: translateX(5px);
         }
 
         /* Certificates Section */
@@ -465,11 +707,12 @@
             border-radius: 12px;
             padding: 2rem;
             text-align: center;
-            transition: transform 0.3s ease;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
 
         .certificate-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px) rotate(1deg);
+            box-shadow: 0 10px 30px var(--shadow);
             border-color: var(--accent);
         }
 
@@ -477,6 +720,11 @@
             font-size: 3rem;
             color: var(--accent);
             margin-bottom: 1rem;
+            transition: transform 0.4s ease;
+        }
+
+        .certificate-item:hover .cert-icon {
+            transform: scale(1.2);
         }
 
         .cert-name {
@@ -509,11 +757,12 @@
             padding: 2rem;
             border-radius: 12px;
             text-align: center;
-            transition: transform 0.3s ease;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
 
         .contact-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 30px var(--shadow);
             border-color: var(--accent);
         }
 
@@ -521,6 +770,11 @@
             font-size: 2rem;
             color: var(--accent);
             margin-bottom: 1rem;
+            transition: transform 0.4s ease;
+        }
+
+        .contact-item:hover .icon {
+            transform: rotate(360deg);
         }
 
         .contact-item h3 {
@@ -532,6 +786,7 @@
             color: var(--text-primary);
             text-decoration: none;
             word-break: break-all;
+            transition: color 0.3s ease;
         }
 
         .contact-item a:hover {
@@ -557,15 +812,14 @@
             justify-content: center;
             color: var(--text-primary);
             text-decoration: none;
-            transition: all 0.3s ease;
-            font-size: 1.5rem;
+            transition: all 0.4s ease;
         }
 
         .social-link:hover {
             background: var(--accent);
             color: var(--bg-primary);
             border-color: var(--accent);
-            transform: translateY(-3px);
+            transform: translateY(-3px) rotate(5deg);
         }
 
         /* Modal */
@@ -579,7 +833,7 @@
             background: rgba(0, 0, 0, 0.9);
             z-index: 2000;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.5s ease;
         }
 
         .modal.active {
@@ -599,12 +853,13 @@
             overflow-y: auto;
             margin: 2rem;
             position: relative;
-            transform: translateY(50px);
-            transition: transform 0.3s ease;
+            transform: scale(0.7);
+            transition: transform 0.5s ease, opacity 0.5s ease;
         }
 
         .modal.active .modal-content {
-            transform: translateY(0);
+            transform: scale(1);
+            opacity: 1;
         }
 
         .close-modal {
@@ -616,21 +871,77 @@
             color: var(--text-primary);
             font-size: 2rem;
             cursor: pointer;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, transform 0.3s ease;
         }
 
         .close-modal:hover {
             color: var(--accent);
+            transform: rotate(90deg);
         }
 
         .modal-content h3 {
             color: var(--accent);
             margin: 2rem 0 1rem 0;
             font-size: 1.3rem;
+            position: relative;
+        }
+
+        .modal-content h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.4s ease;
+        }
+
+        .modal.active .modal-content h3::after {
+            width: 50px;
         }
 
         .modal-content h3:first-of-type {
             margin-top: 1rem;
+        }
+
+        /* Custom Cursor */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: all 0.3s ease;
+            transition-property: transform, opacity, border;
+            transform: translate(-50%, -50%);
+        }
+
+        .cursor--active {
+            transform: translate(-50%, -50%) scale(1.5);
+            border-color: var(--accent-hover);
+            background: rgba(0, 217, 255, 0.2);
+        }
+
+        /* Parallax Background */
+        .parallax-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .parallax-bg div {
+            position: absolute;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0.3;
         }
 
         /* Responsive Design */
@@ -710,6 +1021,10 @@
                 margin: 1rem;
                 padding: 2rem;
             }
+
+            .cursor {
+                display: none;
+            }
         }
 
         @media (max-width: 480px) {
@@ -781,9 +1096,68 @@
         html {
             scroll-behavior: smooth;
         }
+
+        /* Additional animations */
+        .animate {
+            animation: slideInUp 0.6s ease forwards;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .keyboard-navigation *:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        /* Accessibility improvements */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            .navbar, .hamburger, .loading, .modal, .cursor, .parallax-bg {
+                display: none !important;
+            }
+            
+            .section {
+                display: block !important;
+                page-break-inside: avoid;
+                margin-bottom: 2rem;
+            }
+            
+            body {
+                background: white !important;
+                color: black !important;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+
+    <!-- Parallax Background -->
+    <div class="parallax-bg">
+        <div style="width: 20px; height: 20px; top: 20%; left: 10%;"></div>
+        <div style="width: 15px; height: 15px; top: 50%; left: 80%;"></div>
+        <div style="width: 25px; height: 25px; top: 70%; left: 30%;"></div>
+        <div style="width: 18px; height: 18px; top: 30%; left: 60%;"></div>
+    </div>
+
     <!-- Loading Screen -->
     <div class="loading" id="loading">
         <div class="spinner"></div>
@@ -986,22 +1360,22 @@
                         </ul>
                     </div>
                 </div>
-            </div>
 
-            <div class="timeline-item" style="background: var(--bg-secondary); border-color: var(--accent);">
-                <h3 class="job-title">Career Transition Journey</h3>
-                <p class="company-name">Self-Directed Learning & Professional Development</p>
-                <p class="job-duration">2024 - Present</p>
-                <div class="job-achievements">
-                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">Actively transitioning from maritime operations to cybersecurity through:</p>
-                    <ul>
-                        <li>Pursuing Google Cybersecurity Professional Certification</li>
-                        <li>Completing Cisco Junior Cybersecurity Career Path</li>
-                        <li>Studying IBM SkillsBuild AI Fundamentals</li>
-                        <li>Hands-on practice with Linux system administration</li>
-                        <li>Developing security audit and risk assessment skills</li>
-                        <li>Building practical cybersecurity project portfolio</li>
-                    </ul>
+                <div class="timeline-item" style="background: var(--bg-secondary); border-color: var(--accent);">
+                    <h3 class="job-title">Career Transition Journey</h3>
+                    <p class="company-name">Self-Directed Learning & Professional Development</p>
+                    <p class="job-duration">2024 - Present</p>
+                    <div class="job-achievements">
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">Actively transitioning from maritime operations to cybersecurity through:</p>
+                        <ul>
+                            <li>Pursuing Google Cybersecurity Professional Certification</li>
+                            <li>Completing Cisco Junior Cybersecurity Career Path</li>
+                            <li>Studying IBM SkillsBuild AI Fundamentals</li>
+                            <li>Hands-on practice with Linux system administration</li>
+                            <li>Developing security audit and risk assessment skills</li>
+                            <li>Building practical cybersecurity project portfolio</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1197,18 +1571,21 @@
 
         // Navigation functionality
         function showSection(targetId) {
-            // Hide all sections
             sections.forEach(section => {
                 section.classList.remove('active');
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
             });
 
-            // Show target section
             const targetSection = document.getElementById(targetId);
             if (targetSection) {
                 targetSection.classList.add('active');
+                setTimeout(() => {
+                    targetSection.style.opacity = '1';
+                    targetSection.style.transform = 'translateY(0)';
+                }, 50);
             }
 
-            // Update active nav link
             navLinks.forEach(link => {
                 link.classList.remove('active');
             });
@@ -1218,7 +1595,6 @@
                 activeLink.classList.add('active');
             }
 
-            // Close mobile menu
             hamburger.classList.remove('active');
             navMenu.classList.remove('active');
         }
@@ -1283,6 +1659,31 @@
             }
         });
 
+        // Custom Cursor
+        const cursor = document.querySelector('.cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        document.addEventListener('mousedown', () => {
+            cursor.classList.add('cursor--active');
+        });
+
+        document.addEventListener('mouseup', () => {
+            cursor.classList.remove('cursor--active');
+        });
+
+        // Parallax Effect
+        const parallaxElements = document.querySelectorAll('.parallax-bg div');
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.pageYOffset;
+            parallaxElements.forEach((el, index) => {
+                const speed = 0.2 + index * 0.1;
+                el.style.transform = `translateY(${scrollPosition * speed}px)`;
+            });
+        });
+
         // Smooth animations on scroll
         const observerOptions = {
             threshold: 0.1,
@@ -1292,6 +1693,7 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
                     entry.target.style.opacity = '1';
                     entry.target.style.transform = 'translateY(0)';
                 }
@@ -1306,14 +1708,15 @@
             observer.observe(el);
         });
 
-        // Add interactive hover effects
-        document.querySelectorAll('.portfolio-item').forEach(item => {
+        // Enhanced hover effects
+        document.querySelectorAll('.portfolio-item, .certificate-item, .contact-item, .skill-category').forEach(item => {
             item.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px) scale(1.02)';
+                this.style.transform = 'translateY(-10px) scale(1.02) rotate(1deg)';
+                this.style.transition = 'transform 0.4s ease, box-shadow 0.4s ease';
             });
             
             item.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
+                this.style.transform = 'translateY(0) scale(1) rotate(0)';
             });
         });
 
@@ -1332,8 +1735,8 @@
             lastScrollTop = scrollTop;
         });
 
-        // Add typing effect for hero text
-        function typeWriter(element, text, speed = 50) {
+        // Enhanced typing effect
+        function typeWriter(element, text, speed = 50, callback) {
             let i = 0;
             element.innerHTML = '';
             function type() {
@@ -1341,130 +1744,27 @@
                     element.innerHTML += text.charAt(i);
                     i++;
                     setTimeout(type, speed);
+                } else if (callback) {
+                    callback();
                 }
             }
             type();
         }
 
-        // Initialize typing effect on page load
+        // Initialize typing effect
         window.addEventListener('load', () => {
             const heroRole = document.querySelector('.hero-content .role');
-            if (heroRole) {
+            const heroTagline = document.querySelector('.hero-content .tagline');
+            if (heroRole && heroTagline) {
                 setTimeout(() => {
-                    typeWriter(heroRole, 'Cybersecurity & Technology Enthusiast', 100);
+                    typeWriter(heroRole, 'Cybersecurity & Technology Enthusiast', 100, () => {
+                        typeWriter(heroTagline, heroTagline.textContent, 30);
+                    });
                 }, 1500);
             }
         });
 
-        // Add smooth reveal animations
-        function revealOnScroll() {
-            const reveals = document.querySelectorAll('.timeline-item, .skill-category, .certificate-item');
-            
-            reveals.forEach(reveal => {
-                const windowHeight = window.innerHeight;
-                const revealTop = reveal.getBoundingClientRect().top;
-                const revealPoint = 150;
-                
-                if (revealTop < windowHeight - revealPoint) {
-                    reveal.classList.add('revealed');
-                }
-            });
-        }
-
-        window.addEventListener('scroll', revealOnScroll);
-
-        // Add glowing effect to accent elements
-        document.querySelectorAll('.avatar-circle, .profile-photo').forEach(element => {
-            element.addEventListener('mouseenter', function() {
-                this.style.boxShadow = '0 0 50px var(--shadow)';
-            });
-            
-            element.addEventListener('mouseleave', function() {
-                this.style.boxShadow = '0 0 30px var(--shadow)';
-            });
-        });
-
-        // Smooth section transitions
-        function smoothTransition(targetSection) {
-            const currentSection = document.querySelector('.section.active');
-            if (currentSection) {
-                currentSection.style.opacity = '0';
-                setTimeout(() => {
-                    showSection(targetSection);
-                    const newSection = document.getElementById(targetSection);
-                    if (newSection) {
-                        newSection.style.opacity = '0';
-                        setTimeout(() => {
-                            newSection.style.opacity = '1';
-                        }, 50);
-                    }
-                }, 200);
-            } else {
-                showSection(targetSection);
-            }
-        }
-
-        // Update navigation to use smooth transitions
-        navLinks.forEach(link => {
-            link.removeEventListener('click', () => {}); // Remove previous listener
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetSection = link.getAttribute('data-section');
-                smoothTransition(targetSection);
-            });
-        });
-
-        // Add particle effect background (optional enhancement)
-        function createParticles() {
-            const particleCount = 50;
-            const particles = [];
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.style.position = 'fixed';
-                particle.style.width = '2px';
-                particle.style.height = '2px';
-                particle.style.backgroundColor = 'var(--accent)';
-                particle.style.borderRadius = '50%';
-                particle.style.opacity = '0.3';
-                particle.style.pointerEvents = 'none';
-                particle.style.zIndex = '1';
-                
-                particle.style.left = Math.random() * window.innerWidth + 'px';
-                particle.style.top = Math.random() * window.innerHeight + 'px';
-                
-                document.body.appendChild(particle);
-                particles.push({
-                    element: particle,
-                    x: Math.random() * window.innerWidth,
-                    y: Math.random() * window.innerHeight,
-                    vx: (Math.random() - 0.5) * 2,
-                    vy: (Math.random() - 0.5) * 2
-                });
-            }
-            
-            function animateParticles() {
-                particles.forEach(particle => {
-                    particle.x += particle.vx;
-                    particle.y += particle.vy;
-                    
-                    if (particle.x < 0 || particle.x > window.innerWidth) particle.vx *= -1;
-                    if (particle.y < 0 || particle.y > window.innerHeight) particle.vy *= -1;
-                    
-                    particle.element.style.left = particle.x + 'px';
-                    particle.element.style.top = particle.y + 'px';
-                });
-                
-                requestAnimationFrame(animateParticles);
-            }
-            
-            animateParticles();
-        }
-
-        // Initialize particles on load (comment out if performance is an issue)
-        // createParticles();
-
-        // Add focus management for better accessibility
+        // Add focus management
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Tab') {
                 document.body.classList.add('keyboard-navigation');
@@ -1475,7 +1775,7 @@
             document.body.classList.remove('keyboard-navigation');
         });
 
-        // Performance optimization: Lazy load animations
+        // Performance optimization
         const lazyAnimations = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1483,72 +1783,13 @@
                     lazyAnimations.unobserve(entry.target);
                 }
             });
-        });
+        }, observerOptions);
 
-        document.querySelectorAll('.skill-category, .timeline-item').forEach(el => {
+        document.querySelectorAll('.skill-category, .timeline-item, .certificate-item, .contact-item').forEach(el => {
             lazyAnimations.observe(el);
         });
 
         console.log('🚀 Portfolio loaded successfully! Welcome to Rodolfo\'s Cybersecurity Portfolio');
     </script>
-
-    <style>
-        /* Additional animations and effects */
-        .section {
-            transition: opacity 0.3s ease;
-        }
-
-        .revealed {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-        }
-
-        .animate {
-            animation: slideInUp 0.6s ease forwards;
-        }
-
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .keyboard-navigation *:focus {
-            outline: 2px solid var(--accent);
-            outline-offset: 2px;
-        }
-
-        /* Accessibility improvements */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-
-        /* Print styles */
-        @media print {
-            .navbar, .hamburger, .loading, .modal {
-                display: none !important;
-            }
-            
-            .section {
-                display: block !important;
-                page-break-inside: avoid;
-                margin-bottom: 2rem;
-            }
-            
-            body {
-                background: white !important;
-                color: black !important;
-            }
-        }
-    </style>
 </body>
 </html>
